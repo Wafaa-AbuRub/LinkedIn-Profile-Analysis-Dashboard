@@ -1,0 +1,12 @@
+# Ignore the following files #
+# ----------------------------
+
+# .idea files
+/.idea
+
+# Non important files
+__pycache__/
+
+# My personal LinkedIn data
+/data
+
