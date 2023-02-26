@@ -41,4 +41,8 @@ connections_df["connected_on"] = pd.to_datetime(connections_df["connected_on"])
 # Extract months
 connections_df = connections_df.assign(month=connections_df["connected_on"].dt.strftime("%b"))
 
+# Date-range picker start and end dates
+start_dt = connections_df.connected_on.min().date()  # First connection date
+end_dt = connections_df.connected_on.max().date()  # Last connection date
+
 

@@ -6,8 +6,11 @@
 }
 """
 
-from dash import Dash
+from dash import Dash, dcc
 import dash_bootstrap_components as dbc
+from dashboard_cleaned_data import start_dt, end_dt
+from styles import *
+from ids import *
 
 
 def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
@@ -22,7 +25,16 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
                     width=2),
 
             # ....Second Column.... #
-            dbc.Col([dbc.Card(dbc.CardBody([]))], width=10)],
+            dbc.Col([dbc.Card(dbc.CardBody([
+                dcc.DatePickerSingle(id=date_picker_start,
+                                     min_date_allowed=start_dt,
+                                     date=start_dt),
+
+                dcc.DatePickerSingle(id=date_picker_end,
+                                     max_date_allowed=end_dt,
+                                     date=end_dt)
+
+            ]), color="info", style=date_picker_card_body_style)], width=10)],
 
             className="mb-2 mt-2"),
 
