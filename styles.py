@@ -9,4 +9,7 @@
 
 date_picker_card_body_style = {"height": "17vh"}
 
+date_start_picker_div_style = {"padding left": "5px"}
+date_end_picker_div_style = {"padding left": "5px"}
+
 

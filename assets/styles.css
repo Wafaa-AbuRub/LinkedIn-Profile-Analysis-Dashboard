@@ -1,0 +1,22 @@
+"""
+{
+    "title": "Dashboard Customized CSS Styles",
+    "owner": ("Wafa'a Aburub", "wafaa.github@gmail.com"),
+    "description": "Creates customizes CSS styles for dash components."
+}
+"""
+
+/* Date Picker Start CSS Style */
+.date-picker-start {
+    padding-left: 5px;
+    padding-top: 10px;
+}
+
+/* Date Picker End CSS Style */
+.date-picker-end {
+    padding-left: 15px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+

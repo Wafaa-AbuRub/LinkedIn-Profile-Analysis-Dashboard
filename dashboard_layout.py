@@ -28,11 +28,13 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
             dbc.Col([dbc.Card(dbc.CardBody([
                 dcc.DatePickerSingle(id=date_picker_start,
                                      min_date_allowed=start_dt,
-                                     date=start_dt),
+                                     date=start_dt,
+                                     className="date-picker-start"),
 
                 dcc.DatePickerSingle(id=date_picker_end,
                                      max_date_allowed=end_dt,
-                                     date=end_dt)
+                                     date=end_dt,
+                                     className="date-picker-end")
 
             ]), color="info", style=date_picker_card_body_style)], width=10)],
 
