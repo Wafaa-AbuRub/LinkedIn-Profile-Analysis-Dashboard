@@ -29,11 +29,11 @@ options = dict(loop=True, autoplay=True, renderSettings=dict(preserveAspectRatio
 connections_lottie = Lottie(options=options, width="80%", height="80%", url=__connections_url)
 companies_lottie = Lottie(options=options, width="99%", height="99%", url=__companies_url)
 
-invites_received_lottie = Lottie(options=options, width="80%", height="80%", url=__invites_received_url)
-invites_sent_lottie = Lottie(options=options, width="80%", height="80%", url=__invites_sent_url)
+invites_received_lottie = Lottie(options=options, width="80%", height="80%", url=__invites_received_url, speed=".7")
+invites_sent_lottie = Lottie(options=options, width="80%", height="80%", url=__invites_sent_url, speed=".7")
 
-reactions_lottie = Lottie(options=options, width="80%", height="80%", url=__reactions_url)
+reactions_lottie = Lottie(options=options, width="80%", height="80%", url=__reactions_url, speed=".6")
 
-messages_num_lottie = Lottie(options=options, width="109%", height="109%", url=__messages_num_url)
+messages_num_lottie = Lottie(options=options, width="109%", height="109%", url=__messages_num_url, speed=".7")
 
 
