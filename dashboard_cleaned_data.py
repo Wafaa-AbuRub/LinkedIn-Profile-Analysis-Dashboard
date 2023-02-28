@@ -25,7 +25,7 @@ for df in data_dfs_list:
         df.rename(columns={col_name: col_name.lower().replace(" ", "_")}, inplace=True)
 
 
-# Personal Into
+# Personal Intro
 owner_name = r"{} {}".format(profile_df["first_name"].iloc[0], profile_df["last_name"].iloc[0])
 owner_linkedin_profile = messages_df[messages_df["from"] == owner_name]["sender_profile_url"].unique()[0]
 profile_owner_data = {"owner_name": owner_name, "owner_linkedin_profile": owner_linkedin_profile}

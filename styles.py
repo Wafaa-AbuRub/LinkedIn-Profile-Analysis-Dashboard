@@ -16,3 +16,7 @@ date_end_picker_div_style = {"padding left": "5px"}
 lottie_cards_style = {"textAlign": "center", "box-shadow": "1px 1px 6px 1.5px"}
 
 
+# Graph's cards style
+graph_cards_style = {"box-shadow": ".5px .5px 2px .5px"}
+
+

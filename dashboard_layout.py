@@ -93,25 +93,27 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
         # ....Third Row.... #
         dbc.Row([
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([])])], width=6),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=tc_by_month_id, figure={})])], style=graph_cards_style)], width=6),
 
             # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([])])], width=6)],
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=tc_by_company_id, figure={})])], style=graph_cards_style)], width=6)],
 
-            className="mb-2"),
+            className="mb-2 mt-3"),
 
         # ....Forth Row.... #
         dbc.Row([
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([])])], width=4),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=tc_by_position_id, figure={})])], style=graph_cards_style)], width=4),
 
             # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([])])], width=4),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=msr_id, figure={})])], style=graph_cards_style)], width=4),
 
             # ....Third Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([])])], width=4)],
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=msr_by_month_id, figure={})])], style=graph_cards_style)], width=4)],
 
-            className="mb-2")
+            className="mb-2 mt-3")
     ], fluid=True)
 
     return layout
+
+
