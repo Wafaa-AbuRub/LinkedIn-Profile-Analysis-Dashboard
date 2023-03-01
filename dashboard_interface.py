@@ -8,10 +8,10 @@
 
 
 # Import the necessary libraries
-from dash import Dash, html
+from dash import Dash
 import dash_bootstrap_components as dbc
-from dashboard_layout import wireframe_layout
-from dashboard_cleaned_data import profile_owner_data
+from components.layout import wireframe_layout
+from data.data_loader import loader
 
 
 def linkedin_dashboard_app() -> None:
@@ -21,7 +21,9 @@ def linkedin_dashboard_app() -> None:
     app = Dash(__name__, external_stylesheets=[dbc.themes.LUX])
     app.title = "My LinkedIn Profile Dashboard"
 
-    app.layout = wireframe_layout(app, profile_owner_data)
+    dashboard_data = loader()
+
+    app.layout = wireframe_layout(app, dashboard_data)
 
     app.run()
 
