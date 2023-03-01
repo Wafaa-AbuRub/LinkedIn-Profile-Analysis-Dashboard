@@ -6,6 +6,7 @@
 
 # Non important files
 __pycache__/
+.DS_Store
 
 # My personal LinkedIn data
 /data
