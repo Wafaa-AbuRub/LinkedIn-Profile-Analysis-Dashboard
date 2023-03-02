@@ -51,10 +51,10 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
         # ....Forth Row.... #
         dbc.Row([
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr, figure={})])], style=graph_cards_style)], width=4),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr, figure={})])], style=graph_cards_style)], width=6),
 
             # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr_by_month, figure={})])], style=graph_cards_style)], width=4)],
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr_by_month, figure={})])], style=graph_cards_style)], width=6)],
 
             className="mb-2 mt-3")
     ], fluid=True)

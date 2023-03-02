@@ -23,11 +23,11 @@ def render(app: Dash, data: pd.DataFrame) -> list:
 
     connections_cards_layout = [
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_month, figure={})])], style=graph_cards_style)], width=6),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_month, figure={})])], style=graph_cards_style)], width=4),
             # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_company, figure={})])], style=graph_cards_style)], width=6),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_company, figure={})])], style=graph_cards_style)], width=4),
             # ....Third Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_position, figure={})])],style=graph_cards_style)], width=4)]
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_position, figure={})])], style=graph_cards_style)], width=4)]
 
     return connections_cards_layout
 
