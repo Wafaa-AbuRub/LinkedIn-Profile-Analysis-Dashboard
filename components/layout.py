@@ -11,7 +11,7 @@ import dash_bootstrap_components as dbc
 
 from components.ids import *
 from components.styles import *
-from components.animations import *
+from components import summary_cards
 
 
 def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
@@ -43,51 +43,8 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
             className="mb-2 mt-2"),
 
         # ....Second Row.... #
-        dbc.Row([
-            # ....First Column.... #
-            dbc.Col([dbc.Card([
-                dbc.CardHeader(children=connections_lottie),
-                dbc.CardBody([html.H6(children="Connections"),
-                              html.H2(id=SummaryCardsIDs.connections, children="000")])
-            ], style=lottie_cards_style)], width=2),
-
-            # ....Second Column.... #
-            dbc.Col([dbc.Card([
-                dbc.CardHeader(children=companies_lottie),
-                dbc.CardBody([html.H6(children="Companies"),
-                              html.H2(id=SummaryCardsIDs.companies, children="000")])
-            ], style=lottie_cards_style)], width=2),
-
-            # ....Third Column.... #
-            dbc.Col([dbc.Card([
-                dbc.CardHeader(children=invites_received_lottie),
-                dbc.CardBody([html.H6(children="Invites received"),
-                              html.H2(id=SummaryCardsIDs.invites_received, children="000")])
-            ], style=lottie_cards_style)], width=2),
-
-            # ....Forth Column.... #
-            dbc.Col([dbc.Card([
-                dbc.CardHeader(children=invites_sent_lottie),
-                dbc.CardBody([html.H6(children="Invites sent"),
-                              html.H2(id=SummaryCardsIDs.invites_sent, children="000")])
-            ], style=lottie_cards_style)], width=2),
-
-            # ....Fifth Column.... #
-            dbc.Col([dbc.Card([
-                dbc.CardHeader(children=reactions_lottie),
-                dbc.CardBody([html.H6(children="Reactions"),
-                              html.H2(id=SummaryCardsIDs.reactions, children="000")])
-            ], style=lottie_cards_style)], width=2),
-
-            # ....Sixth Column.... #
-            dbc.Col([dbc.Card([
-                dbc.CardHeader(children=messages_num_lottie),
-                dbc.CardBody([html.H6(children="Messages #"),
-                              html.H2(id=SummaryCardsIDs.messages_num, children="000")])
-            ], style=lottie_cards_style)], width=2)],
-
-            className="mb-2"
-        ),
+        # summary_cards.render(app, data),
+        dbc.Row(summary_cards.render(app, data), className="mb-2"),
 
         # ....Third Row.... #
         dbc.Row([

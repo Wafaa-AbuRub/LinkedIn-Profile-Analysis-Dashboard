@@ -31,7 +31,7 @@ def loader() -> dict:
     owner_linkedin_profile = messages_df[messages_df["from"] == owner_name]["sender_profile_url"].unique()[0]
 
     # Convert date columns to datatime objects
-    messages_df["date"] = pd.to_datetime(messages_df["date"])
+    messages_df["date"] = pd.to_datetime(messages_df["date"]).dt.tz_localize(None)
     reactions_df["date"] = pd.to_datetime(reactions_df["date"])
     invitations_df["sent_at"] = pd.to_datetime(invitations_df["sent_at"])
     connections_df["connected_on"] = pd.to_datetime(connections_df["connected_on"])
@@ -43,6 +43,10 @@ def loader() -> dict:
     # Date-range picker start and end dates
     start_init_dt = connections_df.connected_on.min().date()  # First connection date
     end_init_dt = connections_df.connected_on.max().date()  # Last connection date
+
+    # Normalize same companies names with title format & remove the leading and trailing whitespaces
+    connections_df["company"] = connections_df.company.str.title()
+    connections_df["company"] = connections_df.company.str.strip()
 
     # Combine dashboard data into one dictionary
     dashboard_data = {
