@@ -18,7 +18,7 @@ from components.ids import SummaryCardsIDs, DatePickerIDs
 
 def render(app: Dash, data: dict) -> list:
     """
-    It renders the summary cards and gathers the filtration selections associated with the
+    Renders the summary cards and gathers the filtration selections associated with the
     user's interactions to calculate summary information within a specific date range.
     """
 
