@@ -52,19 +52,19 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
             dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.tc_by_month, figure={})])], style=graph_cards_style)], width=6),
 
             # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.tc_by_company, figure={})])], style=graph_cards_style)], width=6)],
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.tc_by_company, figure={})])], style=graph_cards_style)], width=6),
+
+            # ....Third Column.... #
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.tc_by_position, figure={})])],style=graph_cards_style)], width=4)],
 
             className="mb-2 mt-3"),
 
         # ....Forth Row.... #
         dbc.Row([
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.tc_by_position, figure={})])], style=graph_cards_style)], width=4),
-
-            # ....Second Column.... #
             dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.msr, figure={})])], style=graph_cards_style)], width=4),
 
-            # ....Third Column.... #
+            # ....Second Column.... #
             dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=GraphCardsIDs.msr_by_month, figure={})])], style=graph_cards_style)], width=4)],
 
             className="mb-2 mt-3")
