@@ -38,6 +38,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
 
         fig.update_xaxes(dtick="M1", ticklabelmode="period", tickformat="%b")  # or "%b\n%Y"
         fig.update_traces(textposition="outside")
+        fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
 
         return fig
 
