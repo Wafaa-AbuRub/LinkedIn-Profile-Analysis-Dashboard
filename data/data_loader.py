@@ -37,8 +37,12 @@ def loader() -> dict:
     connections_df["connected_on"] = pd.to_datetime(connections_df["connected_on"])
 
     # Extract months
-    connections_df = connections_df.assign(month=connections_df["connected_on"].dt.strftime("%b"))
-    messages_df = messages_df.assign(month=messages_df["date"].dt.strftime("%b"))
+    connections_df = connections_df.assign(months=connections_df["connected_on"].dt.strftime("%b"))
+    messages_df = messages_df.assign(months=messages_df["date"].dt.strftime("%b"))
+
+    # Extract years
+    connections_df = connections_df.assign(years=connections_df["connected_on"].dt.year)
+    messages_df = messages_df.assign(years=messages_df["date"].dt.year)
 
     # Date-range picker start and end dates
     start_init_dt = connections_df.connected_on.min().date()  # First connection date
@@ -57,10 +61,10 @@ def loader() -> dict:
         "owner_linkedin_profile": owner_linkedin_profile,
 
         "profile": profile_df,
-        "messages": messages_df,
-        "reactions": reactions_df,
-        "invitations": invitations_df,
-        "connections": connections_df
+        "messages": messages_df.sort_values(by="date"),
+        "reactions": reactions_df.sort_values(by="date"),
+        "invitations": invitations_df.sort_values(by="sent_at"),
+        "connections": connections_df.sort_values(by="connected_on")
     }
 
     return dashboard_data
