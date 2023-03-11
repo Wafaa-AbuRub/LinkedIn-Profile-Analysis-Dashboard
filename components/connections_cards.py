@@ -10,6 +10,7 @@ import pandas as pd
 from datetime import date
 from dash import Dash, dcc
 import plotly.express as px
+from wordcloud import WordCloud
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 from components.styles import graph_cards_style
@@ -66,7 +67,16 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         Generates a word-cloud chart figure that represents the number of connections per position.
         """
 
-        return
+        positions_text = _data.position.fillna("Unknown").astype(str)
+
+        positions_wordcloud = WordCloud(background_color="white", height=275).generate(' '.join(positions_text))
+
+        fig = px.imshow(positions_wordcloud, template='ggplot2', title="Total Connections Per Position")
+        fig.update_layout(margin=dict(l=55, r=55, t=55, b=55))
+        fig.update_xaxes(visible=False)
+        fig.update_yaxes(visible=False)
+
+        return fig
 
     @app.callback(
         Output(ConnectionCardsIDs.tc_by_month, "figure"),
