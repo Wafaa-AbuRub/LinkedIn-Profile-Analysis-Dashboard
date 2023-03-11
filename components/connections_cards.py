@@ -34,7 +34,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         _data["years"] = _data.connected_on.dt.year.astype(str)
 
         fig = px.bar(_data, x='connected_on', y='total_connections', color='years', text_auto=True,
-                     title="Total Connections Per Month", height=500)
+                     title="Total Connections Per Month", height=500, template='ggplot2')
 
         fig.update_xaxes(dtick="M1", ticklabelmode="period", tickformat="%b")  # or "%b\n%Y"
         fig.update_traces(textposition="outside")
@@ -44,10 +44,22 @@ def render(app: Dash, data: pd.DataFrame) -> list:
 
     def con_by_company_fig(_data: pd.DataFrame):
         """
-        Generates a bar chart figure that represents the number of connections per company.
+        Generates a bar chart figure that represents the number of connections per n top companies.
         """
 
-        return
+        # Number pf companies to present
+        top_n = 7
+
+        top_comp = _data[['company']].value_counts().reset_index().head(top_n).rename(columns={0: "total_connections"})
+
+        fig = px.bar(top_comp, x='total_connections', y='company', orientation='h', text_auto=True,
+                     title="Total Connections For Top {} Companies!".format(top_n),
+                     template='ggplot2')
+
+        fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
+        fig.update_traces(marker_color='blue')
+
+        return fig
 
     def con_by_position_fig(_data: pd.DataFrame):
         """

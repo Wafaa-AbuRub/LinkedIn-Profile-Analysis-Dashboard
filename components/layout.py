@@ -6,7 +6,7 @@
 }
 """
 
-from dash import Dash, dcc, html
+from dash import Dash, dcc
 import dash_bootstrap_components as dbc
 
 from components.ids import *
