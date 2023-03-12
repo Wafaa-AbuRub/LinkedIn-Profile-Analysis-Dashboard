@@ -16,7 +16,7 @@ from components.styles import graph_cards_style
 from components.ids import MessageCardsIDs, DatePickerIDs
 
 
-def render(app: Dash, data: pd.DataFrame) -> list:
+def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
     """
     Renders the message cards and gathers the filtration selections associated with the
     user's interactions to calculate the messages number sent & received total and per month

@@ -49,7 +49,7 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
         dbc.Row(connections_cards.render(app, data["connections"]), className="mb-2 mt-3"),
 
         # ....Forth Row.... #
-        dbc.Row(messages_cards.render(app, data["messages"]), className="mb-2 mt-3")],
+        dbc.Row(messages_cards.render(app, data['owner_name'], data["messages"]), className="mb-2 mt-3")],
 
         fluid=True)
 
