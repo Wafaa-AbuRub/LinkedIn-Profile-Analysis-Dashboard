@@ -11,7 +11,7 @@ import dash_bootstrap_components as dbc
 
 from components.ids import *
 from components.styles import *
-from components import summary_cards, connections_cards
+from components import summary_cards, connections_cards, messages_cards
 
 
 def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
@@ -49,15 +49,9 @@ def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
         dbc.Row(connections_cards.render(app, data["connections"]), className="mb-2 mt-3"),
 
         # ....Forth Row.... #
-        dbc.Row([
-            # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr, figure={})])], style=graph_cards_style)], width=6),
+        dbc.Row(messages_cards.render(app, data["messages"]), className="mb-2 mt-3")],
 
-            # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr_by_month, figure={})])], style=graph_cards_style)], width=6)],
-
-            className="mb-2 mt-3")
-    ], fluid=True)
+        fluid=True)
 
     return layout
 
