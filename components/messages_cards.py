@@ -6,7 +6,6 @@
 }
 """
 
-
 import pandas as pd
 from datetime import date
 from dash import Dash, dcc
@@ -41,10 +40,24 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
 
     def messages_by_month(_owner_name: str, _data: pd.DataFrame):
         """
-        TODO: Type the functionality here...
+        Generates a bar chart figure that represents the number of messages sent & received per month.
         """
 
-        return []
+        _data = _data.assign(msg_source=_data.sender_name.apply(lambda x: "Sent" if x == _owner_name else "Received"))
+
+        _data = _data.groupby([pd.Grouper(key='date', freq='M'), "msg_source"]).size().reset_index(level=[0, 1]).rename(
+            columns={0: "total_messages"})
+
+        _data["years"] = _data.date.dt.year
+
+        fig = px.bar(_data, x='date', y='total_messages', color='msg_source', text_auto=True, barmode="group",
+                     title="Messages Sent & Received Per Month", template='ggplot2',
+                     color_discrete_map={"Sent": "orange", "Received": "royalblue"})
+
+        fig.update_traces(textposition="outside")
+        fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
+
+        return fig
 
     @app.callback(
         Output(MessageCardsIDs.msr, "figure"),
@@ -62,11 +75,11 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
         return messages_cards_figs
 
     messages_cards_layout = [
-            # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr, figure={})])], style=graph_cards_style)], width=6),
+        # ....First Column.... #
+        dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr_by_month, figure={})])], style=graph_cards_style)], width=8),
 
-            # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr_by_month, figure={})])], style=graph_cards_style)], width=6)]
+        # ....Second Column.... #
+        dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=MessageCardsIDs.msr, figure={})])], style=graph_cards_style)], width=4)]
 
     return messages_cards_layout
 
