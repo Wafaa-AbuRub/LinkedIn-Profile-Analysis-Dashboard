@@ -25,10 +25,11 @@ def loader() -> dict:
     for df in data_dfs_list:
         for col_name in df.columns:
             df.rename(columns={col_name: col_name.lower().replace(" ", "_")}, inplace=True)
+    messages_df.rename(columns={"from": "sender_name", "to": "receiver_name"}, inplace=True)
 
     # Personal Intro
     owner_name = r"{} {}".format(profile_df["first_name"].iloc[0], profile_df["last_name"].iloc[0])
-    owner_linkedin_profile = messages_df[messages_df["from"] == owner_name]["sender_profile_url"].unique()[0]
+    owner_linkedin_profile = messages_df[messages_df["sender_name"] == owner_name]["sender_profile_url"].unique()[0]
 
     # Convert date columns to datatime objects
     messages_df["date"] = pd.to_datetime(messages_df["date"]).dt.tz_localize(None)

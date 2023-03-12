@@ -58,7 +58,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
                      template='ggplot2')
 
         fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
-        fig.update_traces(marker_color='blue')
+        fig.update_traces(marker_color='royalblue')
 
         return fig
 

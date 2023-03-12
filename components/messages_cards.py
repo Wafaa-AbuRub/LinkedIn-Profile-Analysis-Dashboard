@@ -10,6 +10,7 @@
 import pandas as pd
 from datetime import date
 from dash import Dash, dcc
+import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 from components.styles import graph_cards_style
@@ -23,14 +24,22 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
     within a specific date range.
     """
 
-    def messages_summary(_data: pd.DataFrame):
+    def messages_summary(_owner_name: str, _data: pd.DataFrame):
         """
-        TODO: Type the functionality here...
+        Generates a pie chart that represents the total number of sent & received messages.
         """
 
-        return []
+        msg_sent_num = len(_data.query("sender_name == @_owner_name"))
+        msg_received_num = len(_data.query("sender_name != @_owner_name"))
 
-    def messages_by_month(_data: pd.DataFrame):
+        fig = px.pie(names=["Sent", "Received"], values=[msg_sent_num, msg_received_num],
+                     template="ggplot2", title="Messages Sent & Received")
+
+        fig.update_traces(marker_colors=['orange', 'royalblue'])
+
+        return fig
+
+    def messages_by_month(_owner_name: str, _data: pd.DataFrame):
         """
         TODO: Type the functionality here...
         """
@@ -46,9 +55,9 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
     def update_message_cards(start_dt: date, end_dt: date):
         """Updates the graphs within the message cards."""
 
-        m_df = data.query("@start_dt <= connected_on <= @end_dt").reset_index(drop=True)
+        m_df = data.query("@start_dt <= date <= @end_dt").reset_index(drop=True)
 
-        messages_cards_figs = [messages_summary(m_df), messages_by_month(m_df)]
+        messages_cards_figs = [messages_summary(owner_name, m_df), messages_by_month(owner_name, m_df)]
 
         return messages_cards_figs
 
