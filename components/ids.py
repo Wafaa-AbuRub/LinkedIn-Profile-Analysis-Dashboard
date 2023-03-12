@@ -8,8 +8,7 @@
 
 
 class DatePickerIDs:
-    start = "date_picker1_start_id"
-    end = "date_picker2_end_id"
+    range = "date_picker_range_id"
 
 
 class SummaryCardsIDs:  # Lottie's cards header IDs

@@ -6,6 +6,7 @@
 }
 """
 
+
 from dash import Dash
 import dash_bootstrap_components as dbc
 from components import header_cards, summary_cards, connections_cards, messages_cards

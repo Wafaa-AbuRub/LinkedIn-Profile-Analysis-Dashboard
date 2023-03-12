@@ -83,8 +83,8 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         Output(ConnectionCardsIDs.tc_by_month, "figure"),
         Output(ConnectionCardsIDs.tc_by_company, "figure"),
         Output(ConnectionCardsIDs.tc_by_position, "figure"),
-        Input(DatePickerIDs.start, "date"),
-        Input(DatePickerIDs.end, "date")
+        Input(DatePickerIDs.range, "start_date"),
+        Input(DatePickerIDs.range, "end_date")
     )
     def update_connection_cards(start_dt: date, end_dt: date):
         """Updates the graphs within the connection cards."""

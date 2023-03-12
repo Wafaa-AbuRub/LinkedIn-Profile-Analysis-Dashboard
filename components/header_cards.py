@@ -6,7 +6,6 @@
 }
 """
 
-
 from dash import dcc
 from datetime import date
 import dash_bootstrap_components as dbc
@@ -27,18 +26,14 @@ def render(owner_name: str, linkedin_profile: str, start_dt: date, end_dt: date)
                 width=2),
 
         # ....Second Column.... #
-        dbc.Col([dbc.Card(dbc.CardBody([
-            dcc.DatePickerSingle(id=DatePickerIDs.start,
-                                 min_date_allowed=start_dt,
-                                 date=start_dt,
-                                 className="date-picker-start"),
+        dbc.Col([dbc.Card(dbc.CardBody([dcc.DatePickerRange(id=DatePickerIDs.range,
+                                                            min_date_allowed=start_dt,
+                                                            max_date_allowed=end_dt,
+                                                            start_date=start_dt,
+                                                            end_date=end_dt,
+                                                            className="date-picker-range")]),
 
-            dcc.DatePickerSingle(id=DatePickerIDs.end,
-                                 max_date_allowed=end_dt,
-                                 date=end_dt,
-                                 className="date-picker-end")
-
-        ]), color="info", style=date_picker_card_body_style)], width=10)]
+                          color="info", style=date_picker_card_body_style)], width=10)]
 
     return header_cards_layout
 

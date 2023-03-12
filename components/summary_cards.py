@@ -29,8 +29,8 @@ def render(app: Dash, data: dict) -> list:
         Output(SummaryCardsIDs.invites_sent, "children"),
         Output(SummaryCardsIDs.reactions, "children"),
         Output(SummaryCardsIDs.messages_num, "children"),
-        Input(DatePickerIDs.start, "date"),
-        Input(DatePickerIDs.end, "date"))
+        Input(DatePickerIDs.range, "start_date"),
+        Input(DatePickerIDs.range, "end_date"))
     def update_summary_cards(start_dt: date, end_dt: date):
         """Updates the numbers within the summary cards."""
 

@@ -62,8 +62,8 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
     @app.callback(
         Output(MessageCardsIDs.msr, "figure"),
         Output(MessageCardsIDs.msr_by_month, "figure"),
-        Input(DatePickerIDs.start, "date"),
-        Input(DatePickerIDs.end, "date")
+        Input(DatePickerIDs.range, "start_date"),
+        Input(DatePickerIDs.range, "end_date")
     )
     def update_message_cards(start_dt: date, end_dt: date):
         """Updates the graphs within the message cards."""
