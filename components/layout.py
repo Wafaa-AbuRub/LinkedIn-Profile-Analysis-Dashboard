@@ -9,26 +9,23 @@
 
 from dash import Dash
 import dash_bootstrap_components as dbc
-from components import header_cards, summary_cards, connections_cards, messages_cards
+from components.styles import layout_container_style
+from components import sidebar, header_cards, summary_cards, connections_cards, messages_cards
 
 
 def wireframe_layout(app: Dash, data: dict) -> dbc.Container:
     """Creates the main interface components."""
 
     layout = dbc.Container(children=[
-        # ....First Row.... #
-        dbc.Row(header_cards.render(data["owner_name"], data["owner_linkedin_profile"], data["start_init_dt"], data["end_init_dt"]), className="mb-2 mt-2"),
 
-        # ....Second Row.... #
-        dbc.Row(summary_cards.render(app, data), className="mb-2"),
+        dbc.Container(children=[
+            dbc.Row(summary_cards.render(app, data), className="mb-1 mt-3"),
+            dbc.Row(connections_cards.render(app, data["connections"]), className="mb-1 mt-1", ),
+            dbc.Row(messages_cards.render(app, data['owner_name'], data["messages"]), className="mb-1 mt-1")], style=layout_container_style),
 
-        # ....Third Row.... #
-        dbc.Row(connections_cards.render(app, data["connections"]), className="mb-2 mt-3"),
+        header_cards.render(data["owner_name"], data["owner_linkedin_profile"], data["start_init_dt"], data["end_init_dt"]),
 
-        # ....Forth Row.... #
-        dbc.Row(messages_cards.render(app, data['owner_name'], data["messages"]), className="mb-2 mt-3")],
-
-        fluid=True)
+        sidebar.render(data["owner_name"], data["owner_linkedin_profile"], data["owner_geo_location"], data["owner_profile_headline"])])
 
     return layout
 

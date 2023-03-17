@@ -6,6 +6,7 @@
 }
 """
 
+
 import pandas as pd
 from datetime import date
 from dash import Dash, dcc

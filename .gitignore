@@ -11,3 +11,5 @@ __pycache__/
 # My personal LinkedIn data
 /data
 
+# Testing files
+/assets/linkedin_logo2.png

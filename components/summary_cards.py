@@ -59,19 +59,21 @@ def render(app: Dash, data: dict) -> list:
 
         return con_num, comp_num, inv_in_num, inv_out_num, react_num, msg_num
 
+    card_body_height = "h-100"
+
     summary_cards_layout = [
         # ....First Column.... #
-        dbc.Col([dbc.Card([dbc.CardHeader(connections_lottie), dbc.CardBody([html.H6("Connections"), html.H2(id=SummaryCardsIDs.connections, children="000")])], style=lottie_cards_style)], width=2),
+        dbc.Col([dbc.Card([dbc.CardHeader(connections_lottie), dbc.CardBody([html.H6("Connections"), html.H2(id=SummaryCardsIDs.connections, children="000")])], className=card_body_height, style=lottie_cards_style)], width=2),
         # ....Second Column.... #
-        dbc.Col([dbc.Card([dbc.CardHeader(companies_lottie), dbc.CardBody([html.H6("Companies"), html.H2(id=SummaryCardsIDs.companies, children="000")])], style=lottie_cards_style)], width=2),
+        dbc.Col([dbc.Card([dbc.CardHeader(companies_lottie), dbc.CardBody([html.H6("Companies"), html.H2(id=SummaryCardsIDs.companies, children="000")])], className=card_body_height, style=lottie_cards_style)], width=2),
         # ....Third Column.... #
-        dbc.Col([dbc.Card([dbc.CardHeader(invites_received_lottie), dbc.CardBody([html.H6("Invites received"), html.H2(id=SummaryCardsIDs.invites_received, children="000")])], style=lottie_cards_style)], width=2),
+        dbc.Col([dbc.Card([dbc.CardHeader(invites_received_lottie), dbc.CardBody([html.H6("Invites received"), html.H2(id=SummaryCardsIDs.invites_received, children="000")])], className=card_body_height, style=lottie_cards_style)], width=2),
         # ....Forth Column.... #
-        dbc.Col([dbc.Card([dbc.CardHeader(invites_sent_lottie), dbc.CardBody([html.H6("Invites sent"), html.H2(id=SummaryCardsIDs.invites_sent, children="000")])], style=lottie_cards_style)], width=2),
+        dbc.Col([dbc.Card([dbc.CardHeader(invites_sent_lottie), dbc.CardBody([html.H6("Invites sent"), html.H2(id=SummaryCardsIDs.invites_sent, children="000")])], className=card_body_height, style=lottie_cards_style)], width=2),
         # ....Fifth Column.... #
-        dbc.Col([dbc.Card([dbc.CardHeader(reactions_lottie), dbc.CardBody([html.H6("Reactions"), html.H2(id=SummaryCardsIDs.reactions, children="000")])], style=lottie_cards_style)], width=2),
+        dbc.Col([dbc.Card([dbc.CardHeader(reactions_lottie), dbc.CardBody([html.H6("Reactions"), html.H2(id=SummaryCardsIDs.reactions, children="000")])], className=card_body_height, style=lottie_cards_style)], width=2),
         # ....Sixth Column.... #
-        dbc.Col([dbc.Card([dbc.CardHeader(messages_num_lottie), dbc.CardBody([html.H6("Messages #"), html.H2(id=SummaryCardsIDs.messages_num, children="000")])], style=lottie_cards_style)], width=2)]
+        dbc.Col([dbc.Card([dbc.CardHeader(messages_num_lottie), dbc.CardBody([html.H6("Messages #"), html.H2(id=SummaryCardsIDs.messages_num, children="000")])], className=card_body_height, style=lottie_cards_style)], width=2)]
 
     return summary_cards_layout
 

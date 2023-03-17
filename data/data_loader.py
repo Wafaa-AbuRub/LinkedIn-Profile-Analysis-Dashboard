@@ -29,6 +29,8 @@ def loader() -> dict:
 
     # Personal Intro
     owner_name = r"{} {}".format(profile_df["first_name"].iloc[0], profile_df["last_name"].iloc[0])
+    owner_geo_location = profile_df["geo_location"]
+    owner_profile_headline = profile_df["headline"]
     owner_linkedin_profile = messages_df[messages_df["sender_name"] == owner_name]["sender_profile_url"].unique()[0]
 
     # Convert date columns to datatime objects
@@ -59,6 +61,8 @@ def loader() -> dict:
         "end_init_dt": end_init_dt,
 
         "owner_name": owner_name,
+        "owner_geo_location": owner_geo_location,
+        "owner_profile_headline": owner_profile_headline,
         "owner_linkedin_profile": owner_linkedin_profile,
 
         "profile": profile_df,
