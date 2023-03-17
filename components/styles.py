@@ -6,7 +6,7 @@
 }
 """
 
-date_picker_card_style = {"padding": "2rem 0rem 0rem 46rem"}
+date_picker_card_style = {"padding": "1.5rem 0rem 0rem 46rem"}
 
 # Lottie's cards style
 lottie_cards_style = {"textAlign": "center", "box-shadow": "1px 1px 6px 1.5px", "width": "9.6rem"}

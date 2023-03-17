@@ -1,6 +1,7 @@
 # Social-Media Profile Dashboard (Under Development)
 A LinkedIn personal profile Dashboard developed in Python with Dash. This project is a portfolio inspired by its original creators mentioned in the reference section that goes along with my personal development. 
 
+![My LinkedIn Summary Cards](./resources/dashboard_summary_cards.png)
 ## What to expect? Or what can you learn?
 - Type Here...
 
