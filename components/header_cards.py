@@ -6,8 +6,9 @@
 }
 """
 
-from dash import dcc, html
+
 from datetime import date
+from dash import dcc, html
 from components.ids import DatePickerIDs
 from components.styles import header_card_style, date_picker_card_style
 

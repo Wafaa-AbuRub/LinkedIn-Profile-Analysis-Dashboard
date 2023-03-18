@@ -52,10 +52,11 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
 
         fig = px.bar(_data, x='date', y='total_messages', color='msg_source', text_auto=True, barmode="group",
                      title="Messages Sent & Received Per Month", template='ggplot2',
-                     color_discrete_map={"Sent": "orange", "Received": "royalblue"})
+                     color_discrete_map={"Sent": "orange", "Received": "royalblue"},
+                     labels={"total_messages": "Messages Number", "date": "Connection Month"})
 
         fig.update_traces(textposition="outside")
-        fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
+        fig.update_layout(legend_title="MSG Source", margin=dict(l=20, r=20, t=30, b=20))
 
         return fig
 

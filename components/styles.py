@@ -6,6 +6,7 @@
 }
 """
 
+
 date_picker_card_style = {"padding": "1.5rem 0rem 0rem 46rem"}
 
 # Lottie's cards style

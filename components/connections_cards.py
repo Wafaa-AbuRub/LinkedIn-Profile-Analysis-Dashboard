@@ -6,13 +6,12 @@
 }
 """
 
-
 import pandas as pd
 from datetime import date
 from dash import Dash, dcc
 import plotly.express as px
-from wordcloud import WordCloud, STOPWORDS
 import dash_bootstrap_components as dbc
+from wordcloud import WordCloud, STOPWORDS
 from dash.dependencies import Input, Output
 from components.styles import graph_cards_style
 from components.ids import ConnectionCardsIDs, DatePickerIDs
@@ -36,11 +35,12 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         _data["years"] = _data.connected_on.dt.year.astype(str)
 
         fig = px.bar(_data, x='connected_on', y='total_connections', color='years', text_auto=True,
-                     title="Total Connections Per Month", height=500, template='ggplot2')
+                     title="Total Connections Per Month", height=500, template='ggplot2',
+                     labels={"connected_on": "Connection Month", "total_connections": "Connections Number"})
 
         fig.update_xaxes(dtick="M1", ticklabelmode="period", tickformat="%b")  # or "%b\n%Y"
         fig.update_traces(textposition="outside")
-        fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
+        fig.update_layout(legend_title="Years", margin=dict(l=20, r=20, t=30, b=20))
 
         return fig
 
@@ -56,7 +56,8 @@ def render(app: Dash, data: pd.DataFrame) -> list:
 
         fig = px.bar(top_comp, x='total_connections', y='company', orientation='h', text_auto=True,
                      title="Total Connections For Top {} Companies!".format(top_n),
-                     template='ggplot2')
+                     template='ggplot2',
+                     labels={"company": "Company Name", "total_connections": "Connections Number"})
 
         fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
         fig.update_traces(marker_color='royalblue')
@@ -100,14 +101,17 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         # ....First Row.... #
         dbc.Row([
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_month, figure={})])], style=graph_cards_style)], width=12)], className="mb-2 mt-3"),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_month, figure={})])],
+                              style=graph_cards_style)], width=12)], className="mb-2 mt-3"),
 
         # ....Second Row.... #
         dbc.Row([
             # ....First Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_company, figure={})])], style=graph_cards_style)], width=6),
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_company, figure={})])],
+                              style=graph_cards_style)], width=6),
             # ....Second Column.... #
-            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_position, figure={})])], style=graph_cards_style)], width=6)], className="mb-2 mt-3")]
+            dbc.Col([dbc.Card([dbc.CardBody([dcc.Graph(id=ConnectionCardsIDs.tc_by_position, figure={})])],
+                              style=graph_cards_style)], width=6)], className="mb-2 mt-3")]
 
     return connections_cards_layout
 
