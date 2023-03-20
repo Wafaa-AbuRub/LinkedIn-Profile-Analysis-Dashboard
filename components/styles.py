@@ -7,7 +7,14 @@
 """
 
 
-date_picker_card_style = {"padding": "1.5rem 0rem 0rem 46rem"}
+# Header's components styles
+date_picker_card_style = {"padding": "1.2rem 0rem 0rem 32rem"}
+date_picker_div_style = {"display": "inline-block", "width": "80%"}
+
+avatar_img_style = {"display": "inline-block"}
+avatar_text_style = {"display": "inline-block", "color": "white", "padding-left": ".8rem"}
+avatar_div_style = {"display": "inline-block", "padding": "1.2rem 0rem 0rem 1.7rem", "width": "20%"}
+
 
 # Lottie's cards style
 lottie_cards_style = {"textAlign": "center", "box-shadow": "1px 1px 6px 1.5px", "width": "9.6rem"}

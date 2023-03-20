@@ -14,6 +14,7 @@ def loader() -> dict:
     """Loads LinkedIn's data & applies the necessary cleaning!"""
 
     # Import your LinkedIn files
+    registration_df = pd.read_csv("data/registration.csv")
     profile_df = pd.read_csv("data/profile.csv")
     messages_df = pd.read_csv("data/messages.csv")
     reactions_df = pd.read_csv("data/reactions.csv")
@@ -21,14 +22,17 @@ def loader() -> dict:
     connections_df = pd.read_csv("data/connections.csv")
 
     # Convert data-frame columns names to a standard naming format (all small letters with _ between words)
-    data_dfs_list = [profile_df, messages_df, reactions_df, invitations_df, connections_df]
+    data_dfs_list = [registration_df, profile_df, messages_df, reactions_df, invitations_df, connections_df]
     for df in data_dfs_list:
         for col_name in df.columns:
             df.rename(columns={col_name: col_name.lower().replace(" ", "_")}, inplace=True)
     messages_df.rename(columns={"from": "sender_name", "to": "receiver_name"}, inplace=True)
 
     # Personal Intro
-    owner_name = r"{} {}".format(profile_df["first_name"].iloc[0], profile_df["last_name"].iloc[0])
+    owner_first_name = profile_df["first_name"].iloc[0]
+    owner_last_name = profile_df["last_name"].iloc[0]
+    owner_name = r"{} {}".format(owner_first_name, owner_last_name)
+
     owner_geo_location = profile_df["geo_location"]
     owner_profile_headline = profile_df["headline"]
     owner_linkedin_profile = messages_df[messages_df["sender_name"] == owner_name]["sender_profile_url"].unique()[0]
@@ -38,6 +42,8 @@ def loader() -> dict:
     reactions_df["date"] = pd.to_datetime(reactions_df["date"])
     invitations_df["sent_at"] = pd.to_datetime(invitations_df["sent_at"])
     connections_df["connected_on"] = pd.to_datetime(connections_df["connected_on"])
+
+    registration_date = pd.to_datetime(registration_df.registered_at).iloc[0].date()
 
     # Extract months
     connections_df = connections_df.assign(months=connections_df["connected_on"].dt.strftime("%b"))
@@ -59,7 +65,9 @@ def loader() -> dict:
     dashboard_data = {
         "start_init_dt": start_init_dt,
         "end_init_dt": end_init_dt,
+        "registration_date": registration_date,
 
+        "owner_first_name": owner_first_name,
         "owner_name": owner_name,
         "owner_geo_location": owner_geo_location,
         "owner_profile_headline": owner_profile_headline,
