@@ -20,7 +20,19 @@ avatar_div_style = {"display": "inline-block", "padding": "1.2rem 0rem 0rem 1.7r
 lottie_cards_style = {"textAlign": "center", "box-shadow": "1px 1px 6px 1.5px", "width": "9.6rem"}
 
 # Graph's cards style
-graph_cards_style = {"box-shadow": ".5px .5px 2px .5px"}
+graph_cards_box_shadow = ".5px .5px 2px .5px"
+
+tc_by_month_style = {"box-shadow": graph_cards_box_shadow, "width": "64rem"}
+tc_by_company_style = {"box-shadow": graph_cards_box_shadow, "width": "31.62rem"}
+tc_by_position_style = {"box-shadow": graph_cards_box_shadow, "width": "32.2rem"}
+
+msr_style = {"box-shadow": graph_cards_box_shadow, "width": "27rem"}
+msr_by_month_style = {"box-shadow": graph_cards_box_shadow, "width": "37rem"}
+
+cards_header_style = {"textAlign": "center",
+                      # "background-color": "#4379e7",
+                      "background-color": "#1f7baa",
+                      "color": "white"}
 
 # Sidebar style
 sidebar_style = {
@@ -33,9 +45,10 @@ sidebar_style = {
     "background-color": "#f8f9fa"
 }
 
-# Header cards style
-header_card_style = {
+# Header style
+header_style = {
     "position": "fixed",
+    # "background-color": "#6a4fde",
     "background-color": "#006699",
     "height": "13.5vh",
     "width": "81.8%",
@@ -47,8 +60,8 @@ header_card_style = {
 layout_container_style = {
     "margin-left": "10rem",
     "width": "1040px",
-    "height": "1910px",
-    "padding-top": "6rem",
+    "height": "1980 px",
+    "padding-top": "5rem",
     "padding-left": ".5rem",
     "background-color": "#f0f2f4"
 }

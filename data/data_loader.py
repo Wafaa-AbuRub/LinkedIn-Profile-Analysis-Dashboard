@@ -43,7 +43,7 @@ def loader() -> dict:
     invitations_df["sent_at"] = pd.to_datetime(invitations_df["sent_at"])
     connections_df["connected_on"] = pd.to_datetime(connections_df["connected_on"])
 
-    registration_date = pd.to_datetime(registration_df.registered_at).iloc[0].date()
+    registration_date = pd.to_datetime(registration_df.registered_at).iloc[0].date().strftime("%d/%b/%Y")
 
     # Extract months
     connections_df = connections_df.assign(months=connections_df["connected_on"].dt.strftime("%b"))

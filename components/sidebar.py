@@ -19,7 +19,7 @@ def render(owner_name: str, profile_link: str, geo_loc: str, profile_headline: s
 
     sidebar = html.Div(
         [
-            html.Img(src="../assets/linkedin_logo.png", width="180", height="50"),
+            html.Img(src="../assets/linkedin_logo.png", width="190", height="50"),
             html.Hr(),
             html.A(children=owner_name, href=profile_link, target="_blank", className="lead"),
             html.P(geo_loc),

@@ -10,7 +10,7 @@
 from datetime import date
 from dash import dcc, html
 from components.ids import DatePickerIDs
-from components.styles import header_card_style, date_picker_card_style, date_picker_div_style, avatar_img_style, avatar_text_style, avatar_div_style
+from components.styles import header_style, date_picker_card_style, date_picker_div_style, avatar_img_style, avatar_text_style, avatar_div_style
 
 
 def render(owner_first_name: str, start_dt: date, end_dt: date) -> html.Header:
@@ -29,7 +29,7 @@ def render(owner_first_name: str, start_dt: date, end_dt: date) -> html.Header:
                                      end_date=end_dt,
                                      # className="date-picker-range",
                                      style=date_picker_card_style), style=date_picker_div_style)
-    ], style=header_card_style)
+    ], style=header_style)
 
     return header_cards_layout
 
