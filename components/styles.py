@@ -34,6 +34,9 @@ cards_header_style = {"textAlign": "center",
                       "background-color": "#1f7baa",
                       "color": "white"}
 
+# Graphs colors reference
+colors_palette = ["royalblue", "orange", "#EF7465", "#3E8B54", "#F9D615", "#6E0687", "#1EBBEE", "#2AB2BF"]
+
 # Sidebar style
 sidebar_style = {
     "position": "fixed",

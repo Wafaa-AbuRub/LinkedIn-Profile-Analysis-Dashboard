@@ -14,7 +14,7 @@ import dash_bootstrap_components as dbc
 from wordcloud import WordCloud, STOPWORDS
 from dash.dependencies import Input, Output
 from components.ids import ConnectionCardsIDs, DatePickerIDs
-from components.styles import cards_header_style, tc_by_month_style, tc_by_company_style, tc_by_position_style
+from components.styles import cards_header_style, tc_by_month_style, tc_by_company_style, tc_by_position_style, colors_palette
 
 
 def render(app: Dash, data: pd.DataFrame) -> list:
@@ -36,6 +36,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
 
         fig = px.bar(_data, x='connected_on', y='total_connections', color='years', text_auto=True,
                      height=500, template='ggplot2',
+                     color_discrete_sequence=colors_palette,
                      labels={"connected_on": "Connection Month", "total_connections": "Connections Number"})
 
         fig.update_xaxes(dtick="M1", ticklabelmode="period", tickformat="%b")  # or "%b\n%Y"
