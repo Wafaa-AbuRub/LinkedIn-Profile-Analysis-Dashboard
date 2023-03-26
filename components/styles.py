@@ -35,18 +35,8 @@ cards_header_style = {"textAlign": "center",
                       "color": "white"}
 
 # Graphs colors reference
-colors_palette = ["royalblue", "orange", "#EF7465", "#3E8B54", "#F9D615", "#6E0687", "#1EBBEE", "#2AB2BF"]
+colors_palette = ["royalblue", "orange", "#3E8B54", "#EF7465", "#F9D615", "#6E0687", "#1EBBEE", "#2AB2BF"]
 
-# Sidebar style
-sidebar_style = {
-    "position": "fixed",
-    "top": 0,
-    "left": 0,
-    "bottom": 0,
-    "width": "15.3rem",
-    "padding": "2rem 1rem",
-    "background-color": "#f8f9fa"
-}
 
 # Header style
 header_style = {
@@ -68,5 +58,27 @@ layout_container_style = {
     "padding-left": ".5rem",
     "background-color": "#f0f2f4"
 }
+
+# Sidebar styles
+sidebar_style = {
+    "position": "fixed",
+    "top": 0,
+    "left": 0,
+    "bottom": 0,
+    "width": "15.3rem",
+    "padding": "1rem 1rem",
+    "background-color": "#f8f9fa"
+}
+
+linkedin_logo_style = {"vertical-align": "top", "padding": ".2rem 0rem 0rem 0rem"}
+
+text_style = {"font-family": "serif"}
+
+job_title_img_style = {"display": "inline-block", "width": "14%", "vertical-align": "top"}
+profile_headline_style = {"font-family": "serif", "color": "#000000"}
+
+signup_img_style = {"display": "inline-block", "width": "18%", "vertical-align": "top"}
+
+registration_date_style = {"font-family": "serif", "font-size": "12", "color": "#000000"}
 
 

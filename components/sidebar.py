@@ -9,7 +9,8 @@
 
 from dash import html
 from datetime import date
-from components.styles import sidebar_style
+from components.styles import sidebar_style, linkedin_logo_style, text_style, job_title_img_style, \
+    profile_headline_style, signup_img_style, registration_date_style
 
 
 def render(owner_name: str, profile_link: str, geo_loc: str, profile_headline: str, registration_date: date) -> html.Div:
@@ -19,15 +20,19 @@ def render(owner_name: str, profile_link: str, geo_loc: str, profile_headline: s
 
     sidebar = html.Div(
         [
-            html.Img(src="../assets/linkedin_logo.png", width="190", height="50"),
+            html.Img(src="../assets/linkedin_logo.png", width="200", height="50", style=linkedin_logo_style),
             html.Hr(),
-            html.A(children=owner_name, href=profile_link, target="_blank", className="lead"),
-            html.P(geo_loc),
-            html.P(profile_headline),
-            html.P("Profile Registration Date\n {}".format(registration_date))
-        ],
-        style=sidebar_style,
-    )
+
+            html.A(children=owner_name, href=profile_link, target="_blank", className="lead", style=text_style),
+            html.P(geo_loc, style=text_style),
+
+            html.Div([html.Img(src="../assets/job_title_img.png", width="32", height="32", style=job_title_img_style),
+                      html.P(profile_headline, style=profile_headline_style)]),
+
+            html.Div([html.Img(src="../assets/signup_img.png", width="40", height="40", style=signup_img_style),
+                      html.P("Registration Date\n {}".format(registration_date, profile_link), style=registration_date_style)])],
+
+        style=sidebar_style)
 
     return sidebar
 
