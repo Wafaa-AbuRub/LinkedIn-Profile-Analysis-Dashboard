@@ -37,6 +37,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         fig = px.bar(_data, x='connected_on', y='total_connections', color='years', text_auto=True,
                      height=500, template='ggplot2',
                      color_discrete_sequence=colors_palette,
+                     opacity=.9,
                      labels={"connected_on": "Connection Month", "total_connections": "Connections Number"})
 
         fig.update_xaxes(dtick="M1", ticklabelmode="period", tickformat="%b")  # or "%b\n%Y"
@@ -56,6 +57,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         top_comp = _data[['company']].value_counts().reset_index().head(top_n).rename(columns={0: "total_connections"})
 
         fig = px.bar(top_comp, x='total_connections', y='company', orientation='h', text_auto=True, template='ggplot2',
+                     opacity=.9,
                      labels={"company": "Company Name", "total_connections": "Connections Number"})
 
         fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
@@ -71,10 +73,11 @@ def render(app: Dash, data: pd.DataFrame) -> list:
         positions_text = _data.position.fillna("Unknown").astype(str)
 
         positions_wordcloud = WordCloud(background_color="white", collocations=False, random_state=1,
+                                        colormap="Blues", max_font_size=300,
                                         stopwords=STOPWORDS, width=400, height=400).generate(' '.join(positions_text))
 
         fig = px.imshow(positions_wordcloud, template='ggplot2')
-        fig.update_layout(margin=dict(l=55, r=55, t=55, b=55))
+        fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
         fig.update_xaxes(visible=False)
         fig.update_yaxes(visible=False)
 

@@ -35,7 +35,7 @@ cards_header_style = {"textAlign": "center",
                       "color": "white"}
 
 # Graphs colors reference
-colors_palette = ["royalblue", "orange", "#3E8B54", "#EF7465", "#F9D615", "#6E0687", "#1EBBEE", "#2AB2BF"]
+colors_palette = ["royalblue", "orange", "#3E8B54", "#EF7465", "#FFC300", "#6a67b1", "#1EBBEE", "#2AB2BF"]
 
 
 # Header style

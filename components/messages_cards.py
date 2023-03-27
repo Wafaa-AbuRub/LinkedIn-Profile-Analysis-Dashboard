@@ -31,7 +31,7 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
         msg_sent_num = len(_data.query("sender_name == @_owner_name"))
         msg_received_num = len(_data.query("sender_name != @_owner_name"))
 
-        fig = px.pie(names=["Sent", "Received"], values=[msg_sent_num, msg_received_num], template="ggplot2")
+        fig = px.pie(names=["Sent", "Received"], values=[msg_sent_num, msg_received_num], template="ggplot2", opacity=.9)
 
         fig.update_traces(marker_colors=['orange', 'royalblue'])
 
@@ -50,7 +50,7 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
         _data["years"] = _data.date.dt.year
 
         fig = px.bar(_data, x='date', y='total_messages', color='msg_source', text_auto=True, barmode="group",
-                     template='ggplot2', color_discrete_map={"Sent": "orange", "Received": "royalblue"},
+                     template='ggplot2', color_discrete_map={"Sent": "orange", "Received": "royalblue"}, opacity=.9,
                      labels={"total_messages": "Messages Number", "date": "Connection Month"})
 
         fig.update_traces(textposition="outside")
