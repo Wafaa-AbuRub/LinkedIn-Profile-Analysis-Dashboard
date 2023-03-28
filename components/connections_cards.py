@@ -6,6 +6,7 @@
 }
 """
 
+
 import pandas as pd
 from datetime import date
 from dash import Dash, dcc
@@ -42,7 +43,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
 
         fig.update_xaxes(dtick="M1", ticklabelmode="period", tickformat="%b")  # or "%b\n%Y"
         fig.update_traces(textposition="outside")
-        fig.update_layout(legend_title="Years", margin=dict(l=20, r=20, t=30, b=20))
+        fig.update_layout(legend_title="Years", margin=dict(l=20, r=20, t=0, b=20))
 
         return fig
 
@@ -60,7 +61,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
                      opacity=.9,
                      labels={"company": "Company Name", "total_connections": "Connections Number"})
 
-        fig.update_layout(margin=dict(l=20, r=20, t=30, b=20))
+        fig.update_layout(margin=dict(l=20, r=20, t=0, b=20))
         fig.update_traces(marker_color='royalblue')
 
         return fig
@@ -77,7 +78,7 @@ def render(app: Dash, data: pd.DataFrame) -> list:
                                         stopwords=STOPWORDS, width=400, height=400).generate(' '.join(positions_text))
 
         fig = px.imshow(positions_wordcloud, template='ggplot2')
-        fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
+        fig.update_layout(margin=dict(l=5, r=5, t=0, b=5))
         fig.update_xaxes(visible=False)
         fig.update_yaxes(visible=False)
 

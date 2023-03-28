@@ -6,6 +6,7 @@
 }
 """
 
+
 import pandas as pd
 from datetime import date
 from dash import Dash, dcc
@@ -34,6 +35,7 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
         fig = px.pie(names=["Sent", "Received"], values=[msg_sent_num, msg_received_num], template="ggplot2", opacity=.9)
 
         fig.update_traces(marker_colors=['orange', 'royalblue'])
+        fig.update_layout(margin=dict(l=80, r=80, t=0, b=0))
 
         return fig
 
@@ -54,7 +56,7 @@ def render(app: Dash, owner_name: str, data: pd.DataFrame) -> list:
                      labels={"total_messages": "Messages Number", "date": "Connection Month"})
 
         fig.update_traces(textposition="outside")
-        fig.update_layout(legend_title="MSG Source", margin=dict(l=20, r=20, t=30, b=20))
+        fig.update_layout(legend_title="MSG Source", margin=dict(l=20, r=20, t=0, b=20))
 
         return fig
 
